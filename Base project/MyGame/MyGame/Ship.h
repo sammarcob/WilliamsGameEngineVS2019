@@ -7,6 +7,7 @@ public:
 	Ship();
 
 	void draw();
+	void update(sf::Time& elapsed);
 private:
 	sf::Sprite sprite_;
 };
