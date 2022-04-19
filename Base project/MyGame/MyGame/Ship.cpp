@@ -1,9 +1,14 @@
 #include "Ship.h"
+using namespace std;
+#include <conio.h>
+#include <stdio.h>
+#include <iostream>
 
 const float SPEED = 0.3f;
 
 void Ship::update(sf::Time& elapsed)
 {
+	
 	sf::Vector2f pos = sprite_.getPosition();
 	float x = pos.x;
 	float y = pos.y;
@@ -16,6 +21,7 @@ void Ship::update(sf::Time& elapsed)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))	x += SPEED * msElapsed;
 
 	sprite_.setPosition(sf::Vector2f(x, y));
+	
 }
 
 Ship::Ship()
@@ -28,4 +34,4 @@ void Ship::draw()
 {
 	GAME.getRenderWindow().draw(sprite_);
 }
-// bottom of 22 (challenge)
+// bottom of 22 (challenge) needs to be done
