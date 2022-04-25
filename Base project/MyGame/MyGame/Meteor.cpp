@@ -1,25 +1,26 @@
-#include "Laser.h"
+#include "Meteor.h"
 
-const float SPEED = 1.2f;
+const float SPEED = -0.5f;
 
-Laser::Laser(sf::Vector2f pos)
+Meteor::Meteor(sf::Vector2f pos)
 {
-	sprite_.setTexture(GAME.getTexture("Resources/laser.png"));
+	sprite_.setTexture(GAME.getTexture("Resources/meteor.png"));
 	sprite_.setPosition(pos);
-	assignTag("laser");
+	assignTag("meteor");
 }
 
-void Laser::draw()
+void Meteor::draw()
 {
 	GAME.getRenderWindow().draw(sprite_);
+	
 }
 
-void Laser::update(sf::Time& elapsed)
+void Meteor::update(sf::Time& elapsed)
 {
 	int msElapsed = elapsed.asMilliseconds();
 	sf::Vector2f pos = sprite_.getPosition();
 
-	if (pos.x > GAME.getRenderWindow().getSize().x)
+	if (pos.x < 0)
 	{
 		makeDead();
 	}
@@ -27,4 +28,5 @@ void Laser::update(sf::Time& elapsed)
 	{
 		sprite_.setPosition(sf::Vector2f(pos.x + SPEED * msElapsed, pos.y));
 	}
+	
 }
