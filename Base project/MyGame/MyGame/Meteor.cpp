@@ -1,6 +1,7 @@
 #include "Meteor.h"
+#include "Laser.h"
 
-const float SPEED = -0.5f;
+const float SPEED = -0.10f;
 
 Meteor::Meteor(sf::Vector2f pos)
 {
@@ -20,7 +21,7 @@ void Meteor::update(sf::Time& elapsed)
 	int msElapsed = elapsed.asMilliseconds();
 	sf::Vector2f pos = sprite_.getPosition();
 
-	if (pos.x < 0)
+	if (pos.x < sprite_.getGlobalBounds().width * -1)
 	{
 		makeDead();
 	}
@@ -28,5 +29,5 @@ void Meteor::update(sf::Time& elapsed)
 	{
 		sprite_.setPosition(sf::Vector2f(pos.x + SPEED * msElapsed, pos.y));
 	}
-	
+	//30 CHALLENGE 
 }

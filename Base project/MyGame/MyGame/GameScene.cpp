@@ -5,7 +5,7 @@
 GameScene::GameScene() 
 {
 	ShipPtr ship = std::make_shared<Ship>();
-	MeteorPtr meteor = std::make_shared<Meteor>();
 	addGameObject(ship);
+	MeteorPtr meteor = std::make_shared<Meteor>(sf::Vector2f(500.0, 100.0));
 	addGameObject(meteor);
 }
