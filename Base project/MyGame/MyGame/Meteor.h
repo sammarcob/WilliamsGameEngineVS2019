@@ -9,6 +9,7 @@ public:
 
 	void draw();
 	void update(sf::Time& elapsed);
+	void timer();
 private:
 	sf::Sprite sprite_;
 };
