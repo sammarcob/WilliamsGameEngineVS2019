@@ -1,25 +1,61 @@
 #include "Meteor.h"
 #include "Laser.h"
+#include <conio.h>
+#include <iostream>
 
-const float SPEED = -0.10f;
+//AAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHH
+	
 
+sf::FloatRect Meteor::getCollisionRect()
+{
+	return sprite_.getGlobalBounds();
+}
+								
+void Meteor::handelCollision(GameObject& otherGameObject)
+{
+	std::cout << "hit" << std::endl;
+	if (otherGameObject.hasTag("laser"))
+	{
+		otherGameObject.makeDead();
+	}
+
+	makeDead();
+}
 
 Meteor::Meteor(sf::Vector2f pos)
 {
+	setCollisionCheckEnabled(true);
 	sprite_.setTexture(GAME.getTexture("Resources/meteor.png"));
 	sprite_.setPosition(pos);
 	assignTag("meteor");
+	float speedRan = (float)rand() / (float)RAND_MAX;
+	mSpeed *= speedRan;
+	
+	int ran = 1 + rand() % 3;
+
+	if (ran == 1)
+	{
+		// straight
+		yVel = 0;
+	}
+	else if (ran == 2)
+	{
+		// down and left
+		yVel = 0.10f;
+	}
+	else if (ran == 3)
+	{
+		// up and left
+		yVel = -0.10f;
+	}
+	sf::FloatRect test = getCollisionRect();
+	std::cout << test.height << std::endl;
 }
 
 void Meteor::draw()
 {
 	GAME.getRenderWindow().draw(sprite_);
 	
-}
-
-void Meteor::timer()
-{
-	int ran = 1 + rand() % 2; //idk man bruuuuhhh
 }
 
 void Meteor::update(sf::Time& elapsed)
@@ -33,14 +69,6 @@ void Meteor::update(sf::Time& elapsed)
 		makeDead();
 		
 	}
-	else if (ran == 2)
-	{
-		sprite_.setPosition(sf::Vector2f(pos.x + SPEED * msElapsed, pos.y + SPEED * msElapsed));
-		
-	}
-	else if (ran == 1)
-	{
-		sprite_.setPosition(sf::Vector2f(pos.x + SPEED * msElapsed, pos.y));
-	}
-	//30 CHALLENGE 
+
+	sprite_.setPosition(sf::Vector2f(pos.x + mSpeed * msElapsed, pos.y + yVel * mSpeed * msElapsed));
 }

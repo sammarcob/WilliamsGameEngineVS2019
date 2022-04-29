@@ -9,9 +9,13 @@ public:
 
 	void draw();
 	void update(sf::Time& elapsed);
-	void timer();
+	
+	sf::FloatRect getCollisionRect();																							
+	void handelCollision(GameObject& otherGameObject);
 private:
 	sf::Sprite sprite_;
+	float yVel;
+	float mSpeed = -0.10;
 };
 
 typedef std::shared_ptr<Meteor> MeteorPtr;
