@@ -10,12 +10,12 @@ sf::FloatRect Laser::getCollisionRect()
 
 Laser::Laser(sf::Vector2f pos)
 {
-	setCollisionCheckEnabled(true);
+	
 	sprite_.setTexture(GAME.getTexture("Resources/laser.png"));
 	sprite_.setPosition(pos);
 	assignTag("laser");
-	sf::FloatRect test = getCollisionRect();
-	std::cout << test.width << std::endl;
+	/*sf::FloatRect test = getCollisionRect();
+	std::cout << test.width << std::endl;*/
 }
 
 void Laser::draw()

@@ -6,12 +6,12 @@
 //AAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHH
 	
 
-sf::FloatRect Meteor::getCollisionRect()
+sf::FloatRect Meteor::getCollisionRect()// do the hitbox challenge
 {
 	return sprite_.getGlobalBounds();
 }
 								
-void Meteor::handelCollision(GameObject& otherGameObject)
+void Meteor::handleCollision(GameObject& otherGameObject)
 {
 	std::cout << "hit" << std::endl;
 	if (otherGameObject.hasTag("laser"))
@@ -24,7 +24,7 @@ void Meteor::handelCollision(GameObject& otherGameObject)
 
 Meteor::Meteor(sf::Vector2f pos)
 {
-	setCollisionCheckEnabled(true);
+	
 	sprite_.setTexture(GAME.getTexture("Resources/meteor.png"));
 	sprite_.setPosition(pos);
 	assignTag("meteor");
@@ -48,8 +48,9 @@ Meteor::Meteor(sf::Vector2f pos)
 		// up and left
 		yVel = -0.10f;
 	}
-	sf::FloatRect test = getCollisionRect();
-	std::cout << test.height << std::endl;
+	/*sf::FloatRect test = getCollisionRect();
+	std::cout << test.height << std::endl;*/
+	setCollisionCheckEnabled(true);
 }
 
 void Meteor::draw()
