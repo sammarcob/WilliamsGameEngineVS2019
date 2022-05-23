@@ -86,5 +86,8 @@
     <Image Include="Resources\meteor.png">
       <Filter>Resources</Filter>
     </Image>
+    <Image Include="Resources\explosion-spritesheet.png">
+      <Filter>Resources</Filter>
+    </Image>
   </ItemGroup>
 </Project>
