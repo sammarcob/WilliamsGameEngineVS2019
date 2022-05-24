@@ -1,23 +1,33 @@
 #include "Meteor.h"
-#include "Laser.h"
+#include "Explosion.h"
+#include "GameScene.h"
 #include <conio.h>
 #include <iostream>
+
+
 
 //AAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHH
 	
 
-sf::FloatRect Meteor::getCollisionRect()// do the hitbox challenge
+sf::FloatRect Meteor::getCollisionRect()
 {
 	return sprite_.getGlobalBounds();
 }
 								
 void Meteor::handleCollision(GameObject& otherGameObject)
 {
+	sf::Vector2f pos = sprite_.getPosition();
+
 	std::cout << "hit" << std::endl;
 	if (otherGameObject.hasTag("laser"))
 	{
 		otherGameObject.makeDead();
+
+		
 	}
+
+	ExplosionPtr explosion = std::make_shared<Explosion>(sprite_.getPosition());
+	GAME.getCurrentScene().addGameObject(explosion);
 
 	makeDead();
 }

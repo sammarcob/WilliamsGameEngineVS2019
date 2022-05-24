@@ -117,6 +117,10 @@
     <Image Include="Resources\real abel%27s dad.png" />
     <Image Include="Resources\ship.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="Resources\boom.wav" />
+    <Media Include="Resources\pew.wav" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

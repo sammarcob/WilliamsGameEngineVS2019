@@ -1,11 +1,14 @@
 #include "Explosion.h"
 
-Explosion::Explosion(sf::Vector2f pos) //IM BOUT TA CUUUUUUUUUUUUUU
+Explosion::Explosion(sf::Vector2f pos) 
 		 : AnimatedSprite(pos)
 {
 	AnimatedSprite::setTexture(GAME.getTexture("Resources/explosion-spritesheet.png"));//explosion sprite sheet go ghere :(
 	SetUpExplosionAnimation();
 	playAnimation("explosion", AnimationMode::OnceForwards);
+
+	boom_.setBuffer(GAME.getSoundBuffer("Resources/boom.wav"));
+	boom_.play();
 
 }
 
