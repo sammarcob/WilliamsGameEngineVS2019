@@ -2,12 +2,14 @@
 #include "GameScene.h"
 #include <sstream>
 
+
 Score::Score(sf::Vector2f pos)
 {
-	text_.setFont(GAME.getFont("Resources//Courneuf-Regular.tff"));
+	text_.setFont(GAME.getFont("Resources/Courneuf-Regular.ttf"));
 	text_.setPosition(pos);
 	text_.setCharacterSize(24);
-	text_.setColor(sf::Color::White);
+	text_.setOutlineColor(sf::Color::White);
+	text_.setFillColor(sf::Color::White);
 	assignTag("score");
 }
 
@@ -24,10 +26,14 @@ void Score::update(sf::Time& elapsed)
 	std::stringstream stream;
 	stream << "Score: " << scene.getScore();
 
-	/*if (scene.getScore() > 50)
+	if (scene.getScore() >= 10)
 	{
-		text_.setColor(sf::Color::Red);
-	}*/
+		text_.setOutlineColor(sf::Color::Red);
+		text_.setFillColor(sf::Color::Red);
+	}
 
 	text_.setString(stream.str());
 }
+
+
+

@@ -15,7 +15,7 @@ public:
 private:
 	sf::Sprite sprite_;
 	float yVel;
-	float mSpeed = -0.10;
+	float mSpeed = -0.50;
 };
 
 typedef std::shared_ptr<Meteor> MeteorPtr;

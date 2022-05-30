@@ -3,6 +3,7 @@
 #include "GameScene.h"
 #include <conio.h>
 #include <iostream>
+#include "GameScene.h"
 
 
 
@@ -18,12 +19,13 @@ void Meteor::handleCollision(GameObject& otherGameObject)
 {
 	sf::Vector2f pos = sprite_.getPosition();
 
-	std::cout << "hit" << std::endl;
+	
 	if (otherGameObject.hasTag("laser"))
 	{
+		std::cout << "hit" << std::endl;
+		GameScene& scene = (GameScene&)GAME.getCurrentScene();
+		scene.increaseScore();
 		otherGameObject.makeDead();
-
-		
 	}
 
 	ExplosionPtr explosion = std::make_shared<Explosion>(sprite_.getPosition());
@@ -38,7 +40,7 @@ Meteor::Meteor(sf::Vector2f pos)
 	sprite_.setTexture(GAME.getTexture("Resources/meteor.png"));
 	sprite_.setPosition(pos);
 	assignTag("meteor");
-	float speedRan = (float)rand() / (float)RAND_MAX;
+	float speedRan = (float)rand() / (float)RAND_MAX + 0.10f;
 	mSpeed *= speedRan;
 	
 	int ran = 1 + rand() % 3;
@@ -77,6 +79,7 @@ void Meteor::update(sf::Time& elapsed)
 
 	if (pos.x < sprite_.getGlobalBounds().width * -1)
 	{
+		
 		makeDead();
 		
 	}

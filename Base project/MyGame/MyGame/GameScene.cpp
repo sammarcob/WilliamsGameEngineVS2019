@@ -23,5 +23,22 @@ int GameScene::getScore()
 
 void GameScene::increaseScore()
 {
-	score_++; // 
+	++score_; 
+}
+
+int GameScene::getLives()
+{
+	return lives_;
+}
+
+void GameScene::decreaseLives()
+{
+	--lives_;
+
+	if (lives_ == 0)
+	{
+		// something wrong here :(
+		GameOverScenePtr gameOverScene = std::make_shared<GameOverScene>(score_);
+		GAME.setScene(gameOverScene);
+	}
 }

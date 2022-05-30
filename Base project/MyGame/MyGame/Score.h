@@ -1,6 +1,7 @@
 #pragma once
 #include "Engine/GameEngine.h"
 
+
 class Score : public GameObject
 {
 public:
@@ -10,6 +11,7 @@ public:
 	//fnctions overriden deom gameobject 
 	void draw();
 	void update(sf::Time& elapsed);
+	
 private:
 	sf::Text text_;
 };

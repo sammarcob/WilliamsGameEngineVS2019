@@ -31,6 +31,12 @@
     <ClCompile Include="Score.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
+    <ClCompile Include="GameOverMessage.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverScene.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\AnimatedSprite.h">
@@ -63,6 +69,12 @@
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="Score.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverMessage.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverScene.h">
       <Filter>Engine</Filter>
     </ClInclude>
   </ItemGroup>
@@ -103,5 +115,10 @@
     <Media Include="Resources\pew.wav">
       <Filter>Resources</Filter>
     </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\Courneuf-Regular.ttf">
+      <Filter>Resources</Filter>
+    </Font>
   </ItemGroup>
 </Project>
