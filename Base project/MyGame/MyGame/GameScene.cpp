@@ -1,4 +1,6 @@
 #include "GameScene.h"
+#include "GameOverMessage.h"
+#include "GameOverScene.h"
 
 #include "Ship.h"
 #include "MeteorSpawner.h"
@@ -37,7 +39,7 @@ void GameScene::decreaseLives()
 
 	if (lives_ == 0)
 	{
-		// something wrong here :(
+		// something wrong here
 		GameOverScenePtr gameOverScene = std::make_shared<GameOverScene>(score_);
 		GAME.setScene(gameOverScene);
 	}

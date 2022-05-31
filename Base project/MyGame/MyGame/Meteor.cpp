@@ -7,19 +7,21 @@
 
 
 
+
+
 //AAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHH
-	
+
 
 sf::FloatRect Meteor::getCollisionRect()
 {
 	return sprite_.getGlobalBounds();
 }
-								
+
 void Meteor::handleCollision(GameObject& otherGameObject)
 {
 	sf::Vector2f pos = sprite_.getPosition();
 
-	
+
 	if (otherGameObject.hasTag("laser"))
 	{
 		std::cout << "hit" << std::endl;
@@ -36,13 +38,13 @@ void Meteor::handleCollision(GameObject& otherGameObject)
 
 Meteor::Meteor(sf::Vector2f pos)
 {
-	
+
 	sprite_.setTexture(GAME.getTexture("Resources/meteor.png"));
 	sprite_.setPosition(pos);
 	assignTag("meteor");
-	float speedRan = (float)rand() / (float)RAND_MAX + 0.10f;
+	float speedRan = (float)rand() / (float)RAND_MAX + 0.05f;
 	mSpeed *= speedRan;
-	
+
 	int ran = 1 + rand() % 3;
 
 	if (ran == 1)
@@ -68,21 +70,29 @@ Meteor::Meteor(sf::Vector2f pos)
 void Meteor::draw()
 {
 	GAME.getRenderWindow().draw(sprite_);
-	
+
 }
 
 void Meteor::update(sf::Time& elapsed)
 {
-	
+
 	int msElapsed = elapsed.asMilliseconds();
 	sf::Vector2f pos = sprite_.getPosition();
 
 	if (pos.x < sprite_.getGlobalBounds().width * -1)
 	{
-		
+		GameScene& scene = (GameScene&)GAME.getCurrentScene();
+		scene.decreaseLives();
+
 		makeDead();
-		
+
 	}
+	else if (pos.y >= GAME.getRenderWindow().getSize().y - 10 || pos.y <= 10)
+	{
+		makeDead();
+	}
+	
+	
 
 	sprite_.setPosition(sf::Vector2f(pos.x + mSpeed * msElapsed, pos.y + yVel * mSpeed * msElapsed));
 }
